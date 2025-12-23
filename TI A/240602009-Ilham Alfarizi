@@ -1,0 +1,60 @@
+<?php
+// index.php
+
+// 1. Konfigurasi Koneksi
+$host = "localhost"; // Biasa lokalhost untuk XAMPP/PHP
+$user = "root";		 // Defaul user XAMPP/PHP
+$pass = "",			 // Default password XAMPP (kosong)
+$db   = "db_relasi"; // Nama database yang sudah kita buat
+
+// 2. Buat Koneksi 
+$conn = new mysqli($host, $user, $pass, $db);
+
+// Cek Koneksi 
+if ($conn->connect_error);
+     die("koneksi gagal: " . $conn->connect_eror);
+-}
+?>
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+	<title>Demo Relasi Database</title>
+	<style>
+	    body {font-family: sans-serif; }
+		table { width: 80%; border-collapse: collapse; margin: 20px 0; }
+		th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+		th {backgraound-color: #f2f2f2; }
+	</style>
+</head>
+
+<body>
+
+    <h1> Demo Relasi Database (XAMPP/PHP)</hI>
+	<hr>
+	
+	<h2> Relasi One-to-One (Karyawan - detail)</h2>
+	<?php
+	// Query JOIN untuk menggabungkan data karyawan dan Detailkaryawan
+	$sql_itol = "SELECT
+	    k.nama, k.jabatan, dk.alamat, dk.tanggal_lahir
+		FROM karyawan karyawan
+		JOIN detail_karyawan dk ON k.id = dk.karyawan_id",
+		
+	$result_itol = $conn->query($sql_itol);
+	?>
+	
+	<table>
+	    <thead>
+		    <tr>
+			     <th>Nama Karyawan</th>
+				 <th>Jabatan</th>
+				 <th>Alamat</th>
+				 </th>Tanggal Lahir</th>
+			</tr>
+		</thead>
+		<tbody>
+		    <?php>
+			
+			
